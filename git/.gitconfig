@@ -1,6 +1,6 @@
 [safe]
 	directory = /Users/varich/Projects
-  	directory = /Users/varich/Projects/*
+  directory = /Users/varich/Projects/*
 [user]
 	name = v.v.
 	email = varich96@gmail.com
