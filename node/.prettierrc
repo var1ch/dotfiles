@@ -1,0 +1,8 @@
+{
+	"printWidth": 100,
+	"arrowParens": "avoid",
+	"operatorPosition": "start",
+	"experimentalTernaries": true,
+	"objectCurlyNewline": "collapse",
+	"trailingComma": "es5"
+}
