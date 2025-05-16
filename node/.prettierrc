@@ -1,8 +1,9 @@
+
 {
 	"printWidth": 100,
+	"useTabs": true,
+	"quoteProps": "as-needed",
+	"jsxSingleQuote": true,
 	"arrowParens": "avoid",
-	"operatorPosition": "start",
-	"experimentalTernaries": true,
-	"objectCurlyNewline": "collapse",
-	"trailingComma": "es5"
+	"objectWrap": "collapse"
 }
