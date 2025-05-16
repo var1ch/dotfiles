@@ -1,2 +1,85 @@
+# Dependencies
+node_modules
+.pnp
+.pnp.js
+.yarn/install-state.gz
+.astro
+
+# Build and compilation outputs
+build
+dist
+stable
+bin
+tmp
+out-tsc
+out
+output
+coverage
+storybook-static
+.next
+public/build
+target
+.cache
+.contentlayer
+.content-collections
+.source
+.remote-assets
+.react-email
+vite.config.*.timestamp*
+*.tsbuildinfo
+
+# Media and assets
+media
+public/media
+libs/db/.drizzle
+
+# Environment variables and secrets
+.env*
+!.env.example
+Pulumi.dev.yaml
+
+# Logs and debugging
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.eslintcache
+connect.lock
+libpeerconnection.log
+testem.log
+build-storybook.log
+atac.log
+.vite-inspect
+lighthouse-report
+playwright-report
+
+# TypeScript
+typings
+components.d.ts
+next-env.d.ts
+
+# IDE - JetBrains
+.idea/*
+
+# IDE - VSCode
+.vscode/*
+
+# IDE - Other
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# Framework-specific
+.nx/cache
+.nx/workspace-data
+.netlify
+deno.lock
+.vercel
+pgdata
+
+# System Files
 .DS_Store
-.vscode
+Thumbs.db
+*.pem
