@@ -115,3 +115,39 @@ source $ZSH/oh-my-zsh.sh
 
 PATH=~/.console-ninja/.bin:$PATH
 eval "$(starship init zsh)"
+
+# Added by Windsurf
+export PATH="/Users/varich/.codeium/windsurf/bin:$PATH"
+
+alias ll='ls -lart'
+alias la='ls -A'
+
+# My custom aliases
+alias ..='cd ..'
+alias ...='cd ../..'
+alias grep='grep --color=auto'
+alias h='history'
+alias c='clear'
+alias nano='nano -c -i -m -S'
+
+# Package managers
+alias pn='pnpm'
+alias pni='pnpm install'
+alias pnr='pnpm run'
+alias pnd='pnpm run dev'
+alias pnb='pnpm run build'
+
+# npm alternatives
+alias ni='npm install'
+alias nr='npm run'
+alias nd='npm run dev'
+alias ndd='npm run debug'
+alias nb='npm run build'
+
+# node
+alias ndb='node --inspect --watch'
+
+# Directory navigation
+alias ....='cd ../../..'
+alias ~='cd ~'
+alias -- -='cd -'
