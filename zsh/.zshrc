@@ -132,6 +132,7 @@ alias c='clear'
 alias nano='nano -c -i -m -S'
 alias subl="open -a 'Sublime Text'"
 alias nwtest="networkQuality -v" # networkQuality verbose.
+alias gs="git status"
 # alias -- -='cd -'
 # alias ip="curl -s ipinfo.io/ip" # Quickly get public IP.
 
@@ -197,7 +198,8 @@ alias psg='ps aux | grep'
 # Network
 alias ping='ping -c 5'
 alias fastping='ping -c 100 -s.2'
-alias myip='curl http://ipecho.net/plain; echo'
+# alias myip='curl http://ipecho.net/plain; echo'
+alias myip='curl https://ipinfo.io/ip; echo'
 alias localip="ifconfig | grep 'inet ' | grep -v 127.0.0.1 | cut -d\  -f2"
 
 # Text processing
