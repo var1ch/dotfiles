@@ -125,12 +125,15 @@ alias la='ls -A'
 # My custom aliases
 alias ..='cd ..'
 alias ...='cd ../..'
+alias ....='cd ../../..'
+alias ~='cd ~'
 alias h='history'
 alias c='clear'
 alias nano='nano -c -i -m -S'
 alias subl="open -a 'Sublime Text'"
-alias ip="curl -s ipinfo.io/ip" # Quickly get public IP.
 alias nwtest="networkQuality -v" # networkQuality verbose.
+# alias -- -='cd -'
+# alias ip="curl -s ipinfo.io/ip" # Quickly get public IP.
 
 # File searching & counting
 alias count='find . -type f | wc -l'
@@ -226,8 +229,8 @@ alias now='date +"%T"'
 alias nowtime='date +"%d-%m-%Y %T"'
 
 # File manager integration (for GUI)
-alias open='xdg-open'  # Linux
-alias finder='open -a Finder'  # macOS
+# alias open='xdg-open'  # Linux
+# alias finder='open -a Finder'  # macOS
 
 # Browser testing
 alias chrome='google-chrome'
@@ -236,8 +239,3 @@ alias safari='open -a Safari'
 
 # node
 alias ndb='node --inspect --watch'
-
-# Directory navigation
-alias ....='cd ../../..'
-alias ~='cd ~'
-alias -- -='cd -'
