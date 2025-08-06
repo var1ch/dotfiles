@@ -129,6 +129,7 @@ alias grep='grep --color=auto'
 alias h='history'
 alias c='clear'
 alias nano='nano -c -i -m -S'
+alias subl="open -a 'Sublime Text'"
 
 # Package managers
 alias pn='pnpm'
