@@ -125,25 +125,114 @@ alias la='ls -A'
 # My custom aliases
 alias ..='cd ..'
 alias ...='cd ../..'
-alias grep='grep --color=auto'
 alias h='history'
 alias c='clear'
 alias nano='nano -c -i -m -S'
 alias subl="open -a 'Sublime Text'"
+alias ip="curl -s ipinfo.io/ip" # Quickly get public IP.
+alias nwtest="networkQuality -v" # networkQuality verbose.
 
-# Package managers
-alias pn='pnpm'
-alias pni='pnpm install'
-alias pnr='pnpm run'
-alias pnd='pnpm run dev'
-alias pnb='pnpm run build'
+# File searching & counting
+alias count='find . -type f | wc -l'
+alias f='find . -name'
+alias h='history | grep'
 
-# npm alternatives
+# npm shortcuts
 alias ni='npm install'
-alias nr='npm run'
-alias nd='npm run dev'
-alias ndd='npm run debug'
-alias nb='npm run build'
+alias nis='npm install --save'
+alias nid='npm install --save-dev'
+alias nig='npm install --global'
+alias nt='npm test'
+alias nstart='npm start'
+alias nbuild='npm run build'
+alias ndev='npm run dev'
+
+# pnpm shortcuts (increasingly popular in 2025)
+alias pn='pnpm'
+alias pi='pnpm install'
+alias pa='pnpm add'
+alias pad='pnpm add -D'
+alias pr='pnpm run'
+alias pt='pnpm test'
+alias pstart='pnpm start'
+alias pdev='pnpm dev'
+alias pbuild='pnpm build'
+
+# Yarn shortcuts
+alias y='yarn'
+alias ya='yarn add'
+alias yad='yarn add --dev'
+alias yr='yarn run'
+alias yt='yarn test'
+
+# Docker compose shortcuts
+alias dcu='docker-compose up -d'
+alias dcub='docker-compose up -d --build'
+alias dcd='docker-compose down'
+alias dcs='docker-compose stop'
+alias dcr='docker-compose restart'
+alias dcl='docker-compose logs'
+
+# Docker container management
+alias dps='docker ps'
+alias dpsa='docker ps -a'
+alias di='docker images'
+alias dex='docker exec -it'
+alias dbash='docker exec -it'
+alias drun='docker run -it --rm'
+
+# Docker cleanup
+alias dprune='docker system prune -af'
+alias drmi='docker rmi $(docker images -q -f dangling=true)'
+alias drmc='docker rm $(docker ps -aq -f status=exited)'
+
+# Process management
+alias ports='netstat -tulanp'
+alias killport='function _killport(){ kill -9 $(lsof -t -i:$1); }; _killport'
+alias psg='ps aux | grep'
+
+# Network
+alias ping='ping -c 5'
+alias fastping='ping -c 100 -s.2'
+alias myip='curl http://ipecho.net/plain; echo'
+alias localip="ifconfig | grep 'inet ' | grep -v 127.0.0.1 | cut -d\  -f2"
+
+# Text processing
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
+
+# Quick file editing
+alias v='vim'
+alias c='code'  # VS Code
+alias subl='subl'  # Sublime Text
+
+# File permissions
+alias mx='chmod a+x'
+alias 000='chmod -R 000'
+alias 644='chmod -R 644'
+alias 666='chmod -R 666'
+alias 755='chmod -R 755'
+alias 777='chmod -R 777'
+
+# Reload shell config
+# alias ea='vim ~/.bash_aliases'  # Edit aliases
+# alias reload='source ~/.zshrc'  # or ~/.bashrc
+alias resource='source ~/.zshrc && echo "Reloaded!"'
+
+# Environment shortcuts
+alias path='echo -e ${PATH//:/\\n}'
+alias now='date +"%T"'
+alias nowtime='date +"%d-%m-%Y %T"'
+
+# File manager integration (for GUI)
+alias open='xdg-open'  # Linux
+alias finder='open -a Finder'  # macOS
+
+# Browser testing
+alias chrome='google-chrome'
+alias firefox='firefox'
+alias safari='open -a Safari'
 
 # node
 alias ndb='node --inspect --watch'
