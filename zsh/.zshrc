@@ -122,7 +122,7 @@ export PATH="/Users/varich/.codeium/windsurf/bin:$PATH"
 alias ll='ls -lart'
 alias la='ls -A'
 
-# My custom aliases
+# ===== My aliases =====
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
@@ -131,17 +131,20 @@ alias h='history'
 alias c='clear'
 alias nano='nano -c -i -m -S'
 alias subl="open -a 'Sublime Text'"
-alias nwtest="networkQuality -v" # networkQuality verbose.
+alias nwtest="networkQuality -v"
 alias gs="git status"
+alias allinfo="curl -s https://ifconfig.me/all"
 # alias -- -='cd -'
 # alias ip="curl -s ipinfo.io/ip" # Quickly get public IP.
+# alias ip="curl -s https://ifconfig.me/ip" # Quickly get public IP.
 
-# File searching & counting
+
+# ===== File searching & counting =====
 alias count='find . -type f | wc -l'
 alias f='find . -name'
 alias h='history | grep'
 
-# npm shortcuts
+# ===== npm shortcuts =====
 alias ni='npm install'
 alias nis='npm install --save'
 alias nid='npm install --save-dev'
@@ -151,7 +154,7 @@ alias nstart='npm start'
 alias nbuild='npm run build'
 alias ndev='npm run dev'
 
-# pnpm shortcuts (increasingly popular in 2025)
+# ===== pnpm shortcuts =====
 alias pn='pnpm'
 alias pi='pnpm install'
 alias pa='pnpm add'
@@ -162,14 +165,14 @@ alias pstart='pnpm start'
 alias pdev='pnpm dev'
 alias pbuild='pnpm build'
 
-# Yarn shortcuts
+# ===== Yarn shortcuts =====
 alias y='yarn'
 alias ya='yarn add'
 alias yad='yarn add --dev'
 alias yr='yarn run'
 alias yt='yarn test'
 
-# Docker compose shortcuts
+# ===== Docker compose shortcuts =====
 alias dcu='docker-compose up -d'
 alias dcub='docker-compose up -d --build'
 alias dcd='docker-compose down'
@@ -177,7 +180,7 @@ alias dcs='docker-compose stop'
 alias dcr='docker-compose restart'
 alias dcl='docker-compose logs'
 
-# Docker container management
+# ===== Docker container management =====
 alias dps='docker ps'
 alias dpsa='docker ps -a'
 alias di='docker images'
@@ -185,34 +188,34 @@ alias dex='docker exec -it'
 alias dbash='docker exec -it'
 alias drun='docker run -it --rm'
 
-# Docker cleanup
+# ===== Docker cleanup =====
 alias dprune='docker system prune -af'
 alias drmi='docker rmi $(docker images -q -f dangling=true)'
 alias drmc='docker rm $(docker ps -aq -f status=exited)'
 
-# Process management
-alias ports='netstat -tulanp'
-alias killport='function _killport(){ kill -9 $(lsof -t -i:$1); }; _killport'
-alias psg='ps aux | grep'
+# ===== Process management =====
+# alias ports='netstat -tulanp'
+# alias killport='function _killport(){ kill -9 $(lsof -t -i:$1); }; _killport'
+# alias psg='ps aux | grep'
 
-# Network
+# ===== Network =====
 alias ping='ping -c 5'
 alias fastping='ping -c 100 -s.2'
-# alias myip='curl http://ipecho.net/plain; echo'
-alias myip='curl https://ipinfo.io/ip; echo'
 alias localip="ifconfig | grep 'inet ' | grep -v 127.0.0.1 | cut -d\  -f2"
+alias myip='curl https://ipinfo.io/ip; echo'
+# alias myip='curl http://ipecho.net/plain; echo'
 
-# Text processing
+# ===== Text processing =====
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
-# Quick file editing
+# ===== Quick file editing =====
 alias v='vim'
 alias c='code'  # VS Code
 alias subl='subl'  # Sublime Text
 
-# File permissions
+# ===== File permissions =====
 alias mx='chmod a+x'
 alias 000='chmod -R 000'
 alias 644='chmod -R 644'
@@ -220,33 +223,32 @@ alias 666='chmod -R 666'
 alias 755='chmod -R 755'
 alias 777='chmod -R 777'
 
-# Reload shell config
+# ===== Reload shell config =====
+alias resource='source ~/.zshrc && echo "Reloaded!"'
 # alias ea='vim ~/.bash_aliases'  # Edit aliases
 # alias reload='source ~/.zshrc'  # or ~/.bashrc
-alias resource='source ~/.zshrc && echo "Reloaded!"'
 
-# Environment shortcuts
+# ===== Environment shortcuts =====
 alias path='echo -e ${PATH//:/\\n}'
 alias now='date +"%T"'
 alias nowtime='date +"%d-%m-%Y %T"'
 
-# File manager integration (for GUI)
+# ===== File manager integration (for GUI) =====
 # alias open='xdg-open'  # Linux
 # alias finder='open -a Finder'  # macOS
 
-# Browser testing
+# ===== Browser testing =====
 alias chrome='google-chrome'
 alias firefox='firefox'
 alias safari='open -a Safari'
 
-# Development servers
-# alias serve='python3 -m http.server 8000'  # Quick HTTP server
+# ===== Development servers =====
 alias liveserver='npx live-server'
+# alias serve='python3 -m http.server 8000'  # Quick HTTP server
 # alias webpack='npx webpack-dev-server'
-
 # With automatic opening
-alias devserver='live-server --port=8080 --open --watch=.'
-alias quickserve='npx live-server --port=3000 --open'
+# alias devserver='live-server --port=8080 --open --watch=.'
+# alias quickserve='npx live-server --port=3000 --open'
 
 # node
 alias ndb='node --inspect --watch'
