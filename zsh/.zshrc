@@ -239,5 +239,14 @@ alias chrome='google-chrome'
 alias firefox='firefox'
 alias safari='open -a Safari'
 
+# Development servers
+# alias serve='python3 -m http.server 8000'  # Quick HTTP server
+alias liveserver='npx live-server'
+# alias webpack='npx webpack-dev-server'
+
+# With automatic opening
+alias devserver='live-server --port=8080 --open --watch=.'
+alias quickserve='npx live-server --port=3000 --open'
+
 # node
 alias ndb='node --inspect --watch'
