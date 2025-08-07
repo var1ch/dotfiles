@@ -236,18 +236,9 @@ alias nowtime='date +"%d-%m-%Y %T"'
 # alias open='xdg-open'  # Linux
 # alias finder='open -a Finder'  # macOS
 
-# ===== Browser testing =====
-alias chrome='google-chrome'
-alias firefox='firefox'
-alias safari='open -a Safari'
-
 # ===== Development servers =====
 alias liveserver='npx live-server'
-# alias serve='python3 -m http.server 8000'  # Quick HTTP server
-# alias webpack='npx webpack-dev-server'
-# With automatic opening
-# alias devserver='live-server --port=8080 --open --watch=.'
-# alias quickserve='npx live-server --port=3000 --open'
+alias pserve='python3 -m http.server 8000'
 
 # node
 alias ndb='node --inspect --watch'
