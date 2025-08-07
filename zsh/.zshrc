@@ -51,7 +51,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
+ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 # You can also set it to another string to have that shown instead of the default red dots.
@@ -130,7 +130,6 @@ alias ~='cd ~'
 alias h='history'
 alias c='clear'
 alias nano='nano -c -i -m -S'
-alias subl="open -a 'Sublime Text'"
 alias nwtest="networkQuality -v"
 alias gs="git status"
 alias allinfo="curl -s https://ifconfig.me/all"
@@ -213,7 +212,7 @@ alias egrep='egrep --color=auto'
 # ===== Quick file editing =====
 alias v='vim'
 alias c='code'  # VS Code
-alias subl='subl'  # Sublime Text
+alias subl='open -b com.sublimetext.4' # Sublime Text
 
 # ===== File permissions =====
 alias mx='chmod a+x'
