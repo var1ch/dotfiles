@@ -116,35 +116,30 @@ source $ZSH/oh-my-zsh.sh
 PATH=~/.console-ninja/.bin:$PATH
 eval "$(starship init zsh)"
 
-# Added by Windsurf
-export PATH="/Users/varich/.codeium/windsurf/bin:$PATH"
-
+# ===== My aliases =====
 alias ll='ls -lart'
 alias la='ls -A'
-
-# ===== My aliases =====
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 alias ~='cd ~'
 alias h='history'
-alias c='clear'
 alias nano='nano -c -i -m -S'
 alias nwtest="networkQuality -v"
+
+# ===== Git shortcuts =====
 alias gs="git status"
 alias gamp="git add . && git commit --amend --no-edit && git push --force-with-lease"
-alias allinfo="curl -s https://ifconfig.me/all"
 alias gcfg="cat .git/config"
 alias gcfgw="git config user.name 'Vitalii Variichuk' && git config user.email v.variichuk@targer.com.ua"
-# alias -- -='cd -'
-# alias ip="curl -s ipinfo.io/ip" # Quickly get public IP.
-# alias ip="curl -s https://ifconfig.me/ip" # Quickly get public IP.
-
 
 # ===== File searching & counting =====
 alias count='find . -type f | wc -l'
 alias f='find . -name'
 alias h='history | grep'
+
+# node
+alias ndb='node --inspect --watch'
 
 # ===== npm shortcuts =====
 alias ni='npm install'
@@ -195,17 +190,10 @@ alias dprune='docker system prune -af'
 alias drmi='docker rmi $(docker images -q -f dangling=true)'
 alias drmc='docker rm $(docker ps -aq -f status=exited)'
 
-# ===== Process management =====
-# alias ports='netstat -tulanp'
-# alias killport='function _killport(){ kill -9 $(lsof -t -i:$1); }; _killport'
-# alias psg='ps aux | grep'
-
 # ===== Network =====
 alias ping='ping -c 5'
-alias fastping='ping -c 100 -s.2'
 alias localip="ifconfig | grep 'inet ' | grep -v 127.0.0.1 | cut -d\  -f2"
 alias myip='curl https://ipinfo.io/ip; echo'
-# alias myip='curl http://ipecho.net/plain; echo'
 
 # ===== Text processing =====
 alias grep='grep --color=auto'
@@ -215,33 +203,24 @@ alias egrep='egrep --color=auto'
 # ===== Quick file editing =====
 alias v='vim'
 alias c='code'  # VS Code
-alias subl='open -b com.sublimetext.4' # Sublime Text
+alias subl='open -b com.sublimetext.4'
 
 # ===== File permissions =====
-alias mx='chmod a+x'
-alias 000='chmod -R 000'
-alias 644='chmod -R 644'
-alias 666='chmod -R 666'
-alias 755='chmod -R 755'
-alias 777='chmod -R 777'
+alias mx='chmod a+x'     # Make file executable for all users (owner, group, others)
+alias 000='chmod -R 000' # Remove all permissions (no read, write, execute for anyone)
+alias 644='chmod -R 644' # Read/write for owner, read-only for group and others
+alias 666='chmod -R 666' # Read/write for everyone (no execute permissions)
+alias 755='chmod -R 755' # Full permissions for owner, read/execute for group and others
+alias 777='chmod -R 777' # Full permissions for everyone (read, write, execute)
 
 # ===== Reload shell config =====
 alias resource='source ~/.zshrc && echo "Reloaded!"'
-# alias ea='vim ~/.bash_aliases'  # Edit aliases
-# alias reload='source ~/.zshrc'  # or ~/.bashrc
 
 # ===== Environment shortcuts =====
 alias path='echo -e ${PATH//:/\\n}'
 alias now='date +"%T"'
 alias nowtime='date +"%d-%m-%Y %T"'
 
-# ===== File manager integration (for GUI) =====
-# alias open='xdg-open'  # Linux
-# alias finder='open -a Finder'  # macOS
-
 # ===== Development servers =====
 alias liveserver='npx live-server'
-alias pserve='python3 -m http.server 8000'
-
-# node
-alias ndb='node --inspect --watch'
+alias pyserve='python3 -m http.server 1487'
