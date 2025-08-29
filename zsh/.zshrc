@@ -132,6 +132,20 @@ alias gs="git status"
 alias gamp="git add . && git commit --amend --no-edit && git push --force-with-lease"
 alias gcfg="cat .git/config"
 alias gcfgw="git config user.name 'Vitalii Variichuk' && git config user.email v.variichuk@targer.com.ua"
+alias gsq1='git rebase -i HEAD~1'
+alias gsq2='git rebase -i HEAD~2'
+alias gsq3='git rebase -i HEAD~3'
+alias gsq4='git rebase -i HEAD~4'
+alias gsq5='git rebase -i HEAD~5'
+alias gsq6='git rebase -i HEAD~6'
+# Squash last N commits with function
+gsqf() {
+    if [ $# -eq 0 ]; then
+        echo "Usage: gsquash <number_of_commits>"
+        return 1
+    fi
+    git rebase -i HEAD~$1
+}
 
 # ===== File searching & counting =====
 alias count='find . -type f | wc -l'
