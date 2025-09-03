@@ -5,9 +5,17 @@
 #  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 # fi
 
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+# if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+#  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+# fi
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
+export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
 
@@ -51,7 +59,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-ENABLE_CORRECTION="true"
+# ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 # You can also set it to another string to have that shown instead of the default red dots.
@@ -129,15 +137,9 @@ alias nwtest="networkQuality -v"
 
 # ===== Git shortcuts =====
 alias gs="git status"
-alias gamp="git add . && git commit --amend --no-edit && git push --force-with-lease"
+alias gcom="git commit --message"
 alias gcfg="cat .git/config"
 alias gcfgw="git config user.name 'Vitalii Variichuk' && git config user.email v.variichuk@targer.com.ua"
-alias gsq1='git rebase -i HEAD~1'
-alias gsq2='git rebase -i HEAD~2'
-alias gsq3='git rebase -i HEAD~3'
-alias gsq4='git rebase -i HEAD~4'
-alias gsq5='git rebase -i HEAD~5'
-alias gsq6='git rebase -i HEAD~6'
 # Squash last N commits with function
 gsqf() {
     if [ $# -eq 0 ]; then
@@ -146,6 +148,13 @@ gsqf() {
     fi
     git rebase -i HEAD~$1
 }
+# alias gamp="git add . && git commit --amend --no-edit && git push --force-with-lease"
+# alias gsq1='git rebase -i HEAD~1'
+# alias gsq2='git rebase -i HEAD~2'
+# alias gsq3='git rebase -i HEAD~3'
+# alias gsq4='git rebase -i HEAD~4'
+# alias gsq5='git rebase -i HEAD~5'
+# alias gsq6='git rebase -i HEAD~6'
 
 # ===== File searching & counting =====
 alias count='find . -type f | wc -l'
@@ -164,6 +173,7 @@ alias nt='npm test'
 alias nstart='npm start'
 alias nbuild='npm run build'
 alias ndev='npm run dev'
+alias nshttp='sudo PORT=80 npm start'
 
 # ===== pnpm shortcuts =====
 alias pn='pnpm'
@@ -208,6 +218,7 @@ alias drmc='docker rm $(docker ps -aq -f status=exited)'
 alias ping='ping -c 5'
 alias localip="ifconfig | grep 'inet ' | grep -v 127.0.0.1 | cut -d\  -f2"
 alias myip='curl https://ipinfo.io/ip; echo'
+alias ipinfo='curl https://ipinfo.io/json; echo'
 
 # ===== Text processing =====
 alias grep='grep --color=auto'
@@ -238,3 +249,27 @@ alias nowtime='date +"%d-%m-%Y %T"'
 # ===== Development servers =====
 alias liveserver='npx live-server'
 alias pyserve='python3 -m http.server 1487'
+export PATH="$HOME/.local/bin:$PATH"
+
+# pnpm
+export PNPM_HOME="/Users/varich/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+# The following lines have been added by Docker Desktop to enable Docker CLI completions.
+fpath=(/Users/varich/.docker/completions $fpath)
+autoload -Uz compinit
+compinit
+# End of Docker CLI completions
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+export PATH="$HOME/.local/bin:$PATH"
