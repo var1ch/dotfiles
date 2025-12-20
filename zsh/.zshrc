@@ -5,12 +5,14 @@
 #  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 # fi
 
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-# if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-#  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-# fi
+# Detect OS
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    export IS_MAC=true
+    export IS_LINUX=false
+elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
+    export IS_MAC=false
+    export IS_LINUX=true
+fi
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
@@ -133,7 +135,11 @@ alias ....='cd ../../..'
 alias ~='cd ~'
 alias h='history'
 alias nano='nano -c -i -m -S'
-alias nwtest="networkQuality -v"
+
+# macOS specific aliases
+if [[ "$IS_MAC" == true ]]; then
+    alias nwtest="networkQuality -v"
+fi
 
 # ===== Git shortcuts =====
 alias gs="git status"
@@ -216,9 +222,15 @@ alias drmc='docker rm $(docker ps -aq -f status=exited)'
 
 # ===== Network =====
 alias ping='ping -c 5'
-alias localip="ifconfig | grep 'inet ' | grep -v 127.0.0.1 | cut -d\  -f2"
 alias myip='curl https://ipinfo.io/ip; echo'
 alias ipinfo='curl https://ipinfo.io/json; echo'
+
+# OS-specific network aliases
+if [[ "$IS_MAC" == true ]]; then
+    alias localip="ifconfig | grep 'inet ' | grep -v 127.0.0.1 | awk '{print \$2}'"
+elif [[ "$IS_LINUX" == true ]]; then
+    alias localip="hostname -I | awk '{print \$1}'"
+fi
 
 # ===== Text processing =====
 alias grep='grep --color=auto'
@@ -228,7 +240,14 @@ alias egrep='egrep --color=auto'
 # ===== Quick file editing =====
 alias v='vim'
 alias c='code'  # VS Code
-alias subl='open -b com.sublimetext.4'
+
+# macOS specific - Sublime Text
+if [[ "$IS_MAC" == true ]]; then
+    alias subl='open -b com.sublimetext.4'
+elif [[ "$IS_LINUX" == true ]]; then
+    # Adjust path if needed based on your Sublime Text installation
+    alias subl='subl'
+fi
 
 # ===== File permissions =====
 alias mx='chmod a+x'     # Make file executable for all users (owner, group, others)
@@ -251,15 +270,24 @@ alias liveserver='npx live-server'
 alias pyserve='python3 -m http.server 1487'
 export PATH="$HOME/.local/bin:$PATH"
 
-# pnpm
-export PNPM_HOME="/Users/varich/Library/pnpm"
+# pnpm - macOS path
+if [[ "$IS_MAC" == true ]]; then
+    export PNPM_HOME="/Users/varich/Library/pnpm"
+elif [[ "$IS_LINUX" == true ]]; then
+    export PNPM_HOME="$HOME/.local/share/pnpm"
+fi
+
 case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
-# The following lines have been added by Docker Desktop to enable Docker CLI completions.
-fpath=(/Users/varich/.docker/completions $fpath)
+
+# Docker CLI completions - macOS specific
+if [[ "$IS_MAC" == true ]]; then
+    fpath=(/Users/varich/.docker/completions $fpath)
+fi
+
 autoload -Uz compinit
 compinit
 # End of Docker CLI completions
@@ -267,8 +295,18 @@ compinit
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+# Homebrew - Linux specific (Linuxbrew)
+if [[ "$IS_LINUX" == true ]] && [[ -d "/home/linuxbrew/.linuxbrew" ]]; then
+    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+elif [[ "$IS_MAC" == true ]] && [[ -f "/opt/homebrew/bin/brew" ]]; then
+    # macOS Apple Silicon
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+elif [[ "$IS_MAC" == true ]] && [[ -f "/usr/local/bin/brew" ]]; then
+    # macOS Intel
+    eval "$(/usr/local/bin/brew shellenv)"
+fi
 
+# NVM
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
