@@ -142,8 +142,8 @@ if [[ "$IS_MAC" == true ]]; then
 fi
 
 # ===== Git shortcuts =====
-alias gs="git status"
 alias gcom="git commit --message"
+alias gs="git status"
 alias gcfg="cat .git/config"
 alias gcfgw="git config user.name 'Vitalii Variichuk' && git config user.email v.variichuk@targer.com.ua"
 # Squash last N commits with function
@@ -176,9 +176,9 @@ alias nis='npm install --save'
 alias nid='npm install --save-dev'
 alias nig='npm install --global'
 alias nt='npm test'
-alias nstart='npm start'
-alias nbuild='npm run build'
-alias ndev='npm run dev'
+alias ns='npm start'
+alias nb='npm run build'
+alias nd='npm run dev'
 alias nshttp='sudo PORT=80 npm start'
 
 # ===== pnpm shortcuts =====
@@ -193,11 +193,11 @@ alias pdev='pnpm dev'
 alias pbuild='pnpm build'
 
 # ===== Yarn shortcuts =====
-alias y='yarn'
-alias ya='yarn add'
-alias yad='yarn add --dev'
-alias yr='yarn run'
-alias yt='yarn test'
+# alias y='yarn'
+# alias ya='yarn add'
+# alias yad='yarn add --dev'
+# alias yr='yarn run'
+# alias yt='yarn test'
 
 # ===== Docker compose shortcuts =====
 alias dcu='docker-compose up -d'
@@ -250,18 +250,18 @@ elif [[ "$IS_LINUX" == true ]]; then
 fi
 
 # ===== File permissions =====
-alias mx='chmod a+x'     # Make file executable for all users (owner, group, others)
-alias 000='chmod -R 000' # Remove all permissions (no read, write, execute for anyone)
-alias 644='chmod -R 644' # Read/write for owner, read-only for group and others
-alias 666='chmod -R 666' # Read/write for everyone (no execute permissions)
-alias 755='chmod -R 755' # Full permissions for owner, read/execute for group and others
-alias 777='chmod -R 777' # Full permissions for everyone (read, write, execute)
+alias mx='sudo chmod a+x'     # Make file executable for all users (owner, group, others)
+alias 000='sudo chmod -R 000' # Remove all permissions (no read, write, execute for anyone)
+alias 644='sudo chmod -R 644' # Read/write for owner, read-only for group and others
+alias 666='sudo chmod -R 666' # Read/write for everyone (no execute permissions)
+alias 755='sudo chmod -R 755' # Full permissions for owner, read/execute for group and others
+alias 777='sudo chmod -R 777' # Full permissions for everyone (read, write, execute)
 
 # ===== Reload shell config =====
 alias resource='source ~/.zshrc && echo "Reloaded!"'
 
 # ===== Environment shortcuts =====
-alias path='echo -e ${PATH//:/\\n}'
+alias path='echo -e ${PAT	H//:/\\n}'
 alias now='date +"%T"'
 alias nowtime='date +"%d-%m-%Y %T"'
 
@@ -310,6 +310,8 @@ fi
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# PATHs
 export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:$HOME/go/bin
 export PATH="$HOME/.local/bin:$PATH"
