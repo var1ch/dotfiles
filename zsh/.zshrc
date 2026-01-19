@@ -45,40 +45,34 @@ eval "$(starship init zsh)"
 # Console Ninja (if installed)
 [[ -d "$HOME/.console-ninja/.bin" ]] && export PATH="$HOME/.console-ninja/.bin:$PATH"
 
-# Go (if installed)
-if command -v go &> /dev/null; then
-    [[ -d "/usr/local/go/bin" ]] && export PATH="$PATH:/usr/local/go/bin"
-    [[ -d "$HOME/go/bin" ]] && export PATH="$PATH:$HOME/go/bin"
-    export PATH="$PATH:$(go env GOPATH)/bin"
+# Go
+export PATH="$PATH:/usr/local/go/bin"
+export PATH="$PATH:$HOME/go/bin"
+[[ -d "$HOME/go" ]] && export GOPATH="$HOME/go"
+
+# pnpm
+if [[ "$IS_MAC" == true ]]; then
+    export PNPM_HOME="/Users/varich/Library/pnpm"
+elif [[ "$IS_LINUX" == true ]]; then
+    export PNPM_HOME="$HOME/.local/share/pnpm"
 fi
 
-# pnpm (if installed)
-if command -v pnpm &> /dev/null; then
-    if [[ "$IS_MAC" == true ]]; then
-        export PNPM_HOME="/Users/varich/Library/pnpm"
-    elif [[ "$IS_LINUX" == true ]]; then
-        export PNPM_HOME="$HOME/.local/share/pnpm"
-    fi
-
-    case ":$PATH:" in
-      *":$PNPM_HOME:"*) ;;
-      *) export PATH="$PNPM_HOME:$PATH" ;;
-    esac
-fi
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
 
 # ============================================================================
 # TOOL INITIALIZATIONS
 # ============================================================================
 
-# Homebrew (if installed)
-if command -v brew &> /dev/null || [[ -f "/opt/homebrew/bin/brew" ]] || [[ -f "/usr/local/bin/brew" ]] || [[ -f "/home/linuxbrew/.linuxbrew/bin/brew" ]]; then
-    if [[ "$IS_LINUX" == true ]] && [[ -d "/home/linuxbrew/.linuxbrew" ]]; then
-        eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-    elif [[ "$IS_MAC" == true ]] && [[ -f "/opt/homebrew/bin/brew" ]]; then
-        eval "$(/opt/homebrew/bin/brew shellenv)"
-    elif [[ "$IS_MAC" == true ]] && [[ -f "/usr/local/bin/brew" ]]; then
-        eval "$(/usr/local/bin/brew shellenv)"
-    fi
+# Homebrew
+if [[ "$IS_LINUX" == true ]] && [[ -d "/home/linuxbrew/.linuxbrew" ]]; then
+    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+elif [[ "$IS_MAC" == true ]] && [[ -f "/opt/homebrew/bin/brew" ]]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+elif [[ "$IS_MAC" == true ]] && [[ -f "/usr/local/bin/brew" ]]; then
+    eval "$(/usr/local/bin/brew shellenv)"
 fi
 
 # NVM (if installed)
@@ -88,8 +82,8 @@ if [[ -d "$HOME/.nvm" ]]; then
     [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 fi
 
-# Docker CLI completions (if Docker is installed on macOS)
-if [[ "$IS_MAC" == true ]] && command -v docker &> /dev/null && [[ -d "$HOME/.docker/completions" ]]; then
+# Docker CLI completions (macOS)
+if [[ "$IS_MAC" == true ]] && [[ -d "$HOME/.docker/completions" ]]; then
     fpath=($HOME/.docker/completions $fpath)
 fi
 
