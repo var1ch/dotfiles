@@ -179,7 +179,7 @@ alias nt='npm test'
 alias ns='npm start'
 alias nb='npm run build'
 alias nd='npm run dev'
-alias nshttp='sudo PORT=80 npm start'
+# alias nshttp='sudo PORT=80 npm start'
 
 # ============================================================================
 # ALIASES - PNPM
@@ -261,3 +261,8 @@ gsqf() {
     fi
     git rebase -i HEAD~$1
 }
+# The following lines have been added by Docker Desktop to enable Docker CLI completions.
+fpath=(/Users/varich/.docker/completions $fpath)
+autoload -Uz compinit
+compinit
+# End of Docker CLI completions
