@@ -42,9 +42,6 @@ eval "$(starship init zsh)"
 # Local binaries (if directory exists)
 [[ -d "$HOME/.local/bin" ]] && export PATH="$HOME/.local/bin:$PATH"
 
-# Console Ninja (if installed)
-[[ -d "$HOME/.console-ninja/.bin" ]] && export PATH="$HOME/.console-ninja/.bin:$PATH"
-
 # Go
 export PATH="$PATH:/usr/local/go/bin"
 export PATH="$PATH:$HOME/go/bin"
@@ -86,12 +83,6 @@ fi
 if [[ "$IS_MAC" == true ]] && [[ -d "$HOME/.docker/completions" ]]; then
     fpath=($HOME/.docker/completions $fpath)
 fi
-
-# ============================================================================
-# SHELL COMPLETIONS
-# ============================================================================
-autoload -Uz compinit
-compinit
 
 # ============================================================================
 # ALIASES - NAVIGATION
