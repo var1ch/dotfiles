@@ -1,6 +1,6 @@
 ---
 description: Reviews code for best practices and potential issues
-mode: agent
+mode: subagent
 model: anthropic/claude-opus-4-6
 tools:
 	write: false
