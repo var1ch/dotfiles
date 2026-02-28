@@ -1,0 +1,76 @@
+{
+	"$schema": "https://opencode.ai/config.json",
+	"model": "anthropic/claude-sonnet-4-6",
+	"small_model": "anthropic/claude-haiku-4-5",
+	"provider": {
+		"anthropic": {
+			"options": {
+				"timeout": 600000,
+				"setCacheKey": true
+			}
+		}
+	},
+	"permission": {
+		"bash": "ask",
+		"read": "ask",
+		"glob": "ask",
+		"grep": "ask",
+		"list": "ask",
+		"edit": "ask"
+	},
+	"watcher": {
+		"ignore": [
+			"node_modules/**",
+			".git/**",
+			"dist/**",
+			"build/**",
+			"out/**",
+			"output/**",
+			".next/**",
+			".astro/**",
+			".remix/**",
+			".cache/**",
+			".turbo/**",
+			".vercel/**",
+			".netlify/**",
+			".wrangler/**",
+			"coverage/**",
+			".nyc_output/**",
+			"tmp/**",
+			"temp/**",
+			".tmp/**",
+			"vendor/**",
+			".parcel-cache/**",
+			".vite/**",
+			".svelte-kit/**",
+			".nuxt/**",
+			".output/**",
+			"storybook-static/**",
+			".storybook/static/**",
+			".docusaurus/**",
+			".contentlayer/**",
+			"public/build/**",
+			".env.*",
+			"*.log",
+			".DS_Store",
+			"Thumbs.db",
+			".idea/**",
+			".vscode/**",
+			"*.swp",
+			"*.swo",
+			".pnpm-store/**",
+			".yarn/**",
+			"playwright-report/**",
+			"test-results/**",
+			"cypress/videos/**",
+			"cypress/screenshots/**",
+			"__snapshots__/**",
+			".terraform/**",
+			".docker/**"
+		]
+	},
+	"compaction": {
+		"auto": true
+	},
+	"autoupdate": true
+}

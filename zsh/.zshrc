@@ -251,3 +251,6 @@ fpath=(/Users/varich/.docker/completions $fpath)
 autoload -Uz compinit
 compinit
 # End of Docker CLI completions
+
+# opencode
+export PATH=/Users/varich/.opencode/bin:$PATH
