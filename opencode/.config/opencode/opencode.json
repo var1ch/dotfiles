@@ -1,7 +1,30 @@
 {
 	"$schema": "https://opencode.ai/config.json",
-	"model": "anthropic/claude-sonnet-4-6",
+	"default_agent": "plan",
 	"small_model": "anthropic/claude-haiku-4-5",
+	"model": "anthropic/claude-sonnet-4-6",
+	"agent": {
+		"build": {
+			"model": "anthropic/claude-sonnet-4-6",
+			"variant": "high",
+			"mode": "primary",
+			"tools": {
+				"write": true,
+				"edit": true,
+				"bash": true
+			}
+		},
+		"plan": {
+			"model": "anthropic/claude-haiku-4-5",
+			"variant": "high",
+			"mode": "primary",
+			"tools": {
+				"write": false,
+				"edit": false,
+				"bash": false
+			}
+		},
+	},
 	"disabled_providers": [
 		"openai",
 		"gemini"
@@ -14,8 +37,49 @@
 			"options": {
 				"timeout": 600000,
 				"setCacheKey": true
+			},
+			"models": {
+				"claude-haiku-4-5": {
+					"variants": {
+						"low": {
+							"disabled": true
+						},
+						"medium": {
+							"disabled": true
+						},
+						"max": {
+							"disabled": true
+						}
+					}
+				},
+				"claude-sonnet-4-6": {
+					"variants": {
+						"low": {
+							"disabled": true
+						},
+						"medium": {
+							"disabled": true
+						},
+						"max": {
+							"disabled": true
+						}
+					}
+				},
+				"claude-opus-4-6": {
+					"variants": {
+						"low": {
+							"disabled": true
+						},
+						"medium": {
+							"disabled": true
+						},
+						"max": {
+							"disabled": true
+						}
+					}
+				}
 			}
-		}
+		},
 	},
 	"permission": {
 		"bash": "ask",
